@@ -24,7 +24,7 @@ Libraries needed :
 
 ## Results
 
-Automatically generated transition picture from a square to a circle
+Automatically generated transition image between a square and a circle
 <div align='center'>
   <img src='gallery/fixed_interpolation/image0.png' height="225px">
   <img src='gallery/fixed_interpolation/rond_carre.png' height="225px">
