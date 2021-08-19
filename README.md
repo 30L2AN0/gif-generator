@@ -21,12 +21,15 @@ Libraries needed :
 
 ## Results
 
+Automatically generated transition picture from a square to a circle
 <div align='center'>
   <img src='gallery/fixed_interpolation/image0.png' height="225px">
   <img src='gallery/fixed_interpolation/rond_carre.png' height="225px">
   <img src='gallery/fixed_interpolation/image1.png' height="225px">
 </div>
 
+Interpolated gif with only 4 drawn frames
+
 <div align='center'>
-  <img src='gallery/dancing_square.gif' width='500px'>
+  <img src='gallery/dancing_square.gif' height='225px'>
 </div>
