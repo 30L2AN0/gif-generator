@@ -12,10 +12,10 @@ import Interpolation
 import shutil
 
 try:
-    os.mkdir('gif_components')
+    os.mkdir('gif')
 except:
-    shutil.rmtree('gif_components')
-    os.mkdir('gif_components')
+    shutil.rmtree('gif')
+    os.mkdir('gif')
     print('file cleared')
 
 root0 = Tk()
@@ -59,7 +59,7 @@ def drawing_process(image_number, drawing_root):
 
     def finalize_drawing():
         drawing_root.quit()
-        image.save('gif_components/image' + str(image_number) + '.png')
+        image.save('gif/image' + str(image_number) + '.png')
         canvas.destroy()
         button.destroy()
 
@@ -231,7 +231,7 @@ def gif_creator(root):
         times[1][i] *= 10
 
     frames = []
-    imgs = glob.glob('gif_components/*.png')
+    imgs = glob.glob('gif/*.png')
     for i in range(times[0] + 1):
         if i in times[1]:  # si l'image existe
             time = times[1].index(i)
@@ -246,14 +246,14 @@ def gif_creator(root):
         frames.append(new_frame)
 
     # Save into a GIF file that loops forever
-    frames[0].save('gif_components/png_to_gif.gif',
+    frames[0].save('gif/output.gif',
                    format='GIF',
                    append_images=frames[1:],
                    save_all=True,
                    duration=1, loop=0)
 
     """frames = []
-    imgs = glob.glob('gif_components/*.png')
+    imgs = glob.glob('gif/*.png')
     sorted_pics = sorted([(times[1][i], i) for i in range(len(times[1]))])
     N = len(sorted_pics)
     couples = [[(i, i+1), sorted_pics[i+1][0] - sorted_pics[i][0] - 1] for i in range(N-1)]
@@ -281,14 +281,14 @@ def gif_creator(root):
         for j in range(n):
             intermed = intermeds[j]
             Interpolation.save_picture(Interpolation.reconstitution(intermed),
-                                       "image" + str(i) + str(j), "gif_components")
-            new_frame = Image.open("gif_components/image" + str(i) + str(j) + ".png")
+                                       "image" + str(i) + str(j), "gif")
+            new_frame = Image.open("gif/image" + str(i) + str(j) + ".png")
             frames.append(new_frame)
 
         frames.append(im0)
 
     # Save into a GIF file that loops forever
-    frames[0].save('gif_components/gif_interpolation.gif',
+    frames[0].save('gif/gif_interpolation.gif',
                    format='GIF',
                    append_images=frames[1:],
                    save_all=True,

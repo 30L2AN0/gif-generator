@@ -7,18 +7,15 @@ import random
 import glob
 
 try:
-    os.mkdir('Interpolation')
+    os.mkdir('interpolation')
 except:
     print('already existing')
 
-try:
-    os.mkdir('Interpolation')
-except:
-    print('already existing')
 
-im0 = Image.open("Interpolation/image0.png")
+
+im0 = Image.open("interpolation/image0.png")
 tab0 = np.array(im0)
-im1 = Image.open("Interpolation/image1.png")
+im1 = Image.open("interpolation/image1.png")
 tab1 = np.array(im1)
 
 width, height = len(tab0[0]), len(tab0)
@@ -96,9 +93,9 @@ def save_picture(tab, name, location):
 ##############################################################################################
 
 
-im_rot0 = Image.open("Interpolation/image1.png")
+im_rot0 = Image.open("interpolation/image1.png")
 tab0_rot = np.array(im_rot0)
-im_rot1 = Image.open("Interpolation/image0.png")
+im_rot1 = Image.open("interpolation/image0.png")
 tab1_rot = np.array(im_rot1)
 
 tab0_rot = np.array([[int(tab0_rot[i][j][0]/255) for j in range(width)] for i in range(height)])
@@ -159,7 +156,7 @@ def auto_superposition(tab0_blacks, tab1_blacks):
         vect = (path[0] + random.randint(min_height, max_height), path[1] + random.randint(min_width, max_width))
         new_tab1_bl = translation(vect, new_tab1_bl)
         new_tab1_bl_core = [row[0] for row in new_tab1_bl]
-        save_picture(reconstitution(new_tab1_bl_core), str(i), "Interpolation")
+        save_picture(reconstitution(new_tab1_bl_core), str(i), "interpolation")
         dist = dist_images(tab0_blacks, new_tab1_bl_core)
         if dist < min_dist:
             min_dist = dist
@@ -173,7 +170,7 @@ def auto_superposition(tab0_blacks, tab1_blacks):
             max_width -= int(h_size/15)
 
     fin_tab1_bl_core = [row[0] for row in final_tab1_bl]
-    save_picture(reconstitution(fin_tab1_bl_core), "final", "Interpolation")
+    save_picture(reconstitution(fin_tab1_bl_core), "final", "interpolation")
     return [final_tab1_bl, min_dist]
 
 
@@ -217,20 +214,20 @@ def intermediate_mvt(tab0_bl, final_tab1_bl, nb_of_inter):
 
 
 if __name__ == '__main__':
-    """imA = Image.open("Interpolation/imageA.png")
+    """imA = Image.open("interpolation/imageA.png")
     tabA = np.array(imA)
     tabA = np.array([[int(tabA[i][j][0] / 255) for j in range(width)] for i in range(height)])
     tabA_bl = blacks(tabA)
     tabB_bl = rotation(np.pi/6, tabA_bl, (height/2, width/2))
     tabB_bl = [row[0] for row in translation((-height/5, width/4), tabB_bl)]
     tabB = reconstitution(tabB_bl)
-    save_picture(tabB, "imageB", "Interpolation")"""
+    save_picture(tabB, "imageB", "interpolation")"""
 
     """tab0_bl_rot, tab1_bl_rot = blacks(tab0_rot), blacks(tab1_rot)
     res_bl_rot = rotation(np.pi/2, tab0_bl_rot)
     res_bl_rot = [row[0] for row in translation((height/5, -width/5), res_bl_rot)]
     res_rot = reconstitution(res_bl_rot)
-    save_picture(res_rot, "blabla", "Interpolation")"""
+    save_picture(res_rot, "blabla", "interpolation")"""
 
     tab0_bl, tab1_bl = blacks(tab0_rot), blacks(tab1_rot)
     final_tab1_bl = auto_superposition(tab0_bl, tab1_bl)[0]
@@ -238,15 +235,15 @@ if __name__ == '__main__':
     intermeds = intermediate_mvt(tab0_bl, final_tab1_bl, N)
     for i in range(N):
         intermed = intermeds[i]
-        save_picture(reconstitution(intermed), "intermed"+str(i), "Interpolation")
+        save_picture(reconstitution(intermed), "intermed"+str(i), "interpolation")
 
     """frames = []
-    imgs = glob.glob('Interpolation/special_file/*.png')
+    imgs = glob.glob('interpolation/special_file/*.png')
     for i in range(len((imgs))):
         new_frame = Image.open(imgs[i])
         frames.append(new_frame)
 
-    frames[0].save('Interpolation/special_file/thrown_ball.gif',
+    frames[0].save('interpolation/special_file/thrown_ball.gif',
                    format='GIF',
                    append_images=frames[1:],
                    save_all=True,
