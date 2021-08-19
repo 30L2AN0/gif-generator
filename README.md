@@ -24,6 +24,11 @@ Libraries needed :
 
 ## Results
 
+User interface
+<div align='center'>
+  <img src='interface/NEW_DRAWING.png' height='250px'>
+</div>
+
 Automatically generated transition picture from a square to a circle
 <div align='center'>
   <img src='gallery/fixed_interpolation/image0.png' height="225px">
@@ -36,3 +41,9 @@ Interpolated gif with only 4 drawn frames
 <div align='center'>
   <img src='gallery/dancing_square.gif' height='500px'>
 </div>
+
+## To do
+
+- Improve the interpolation when a drawing contains significantly more black pixels than the other
+- Enable elliptic transitions between frames
+- Allow the user to link segments to improve the interpolation
