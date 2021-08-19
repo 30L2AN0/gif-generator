@@ -24,11 +24,6 @@ Libraries needed :
 
 ## Results
 
-User interface
-<div align='center'>
-  <img src='interface/NEW_DRAWING.png' height='250px'>
-</div>
-
 Automatically generated transition picture from a square to a circle
 <div align='center'>
   <img src='gallery/fixed_interpolation/image0.png' height="225px">
